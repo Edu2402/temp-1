@@ -1,0 +1,117 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="raphael-2.1.4.min.js"></script>
+<script src="justgage.js"></script>
+
+<script>
+var accessToken = "f1f3413d1a61b4df3a66311c7e8d074d9e099bc5";
+var deviceID = "0a10aced202194944a04bc78"
+var url = "https://api.particle.io/v1/devices/" + deviceID + "/gradosC";
+function callback(data, status){
+	if (status == "success") {
+		temp = parseFloat(data.result);
+		temp = temp.toFixed(2);
+		g.refresh(temp);
+		setTimeout(getReading, 1000);
+	}
+	else {
+		alert("There was a problem");
+	}
+}
+function getReading(){
+   	$.get(url, {access_token: accessToken}, callback);
+}
+</script>
+</head>	
+
+<body>
+<div id="gauge" class="200x160px"></div>
+
+<script>
+var g = new JustGage({
+    id: "gauge",
+    value: 0,
+    min: 0,
+    max: 400,
+    title: "Temperatura (C)"
+});
+getReading();
+</script>
+
+//Grados F
+
+<script>
+var accessToken = "f1f3413d1a61b4df3a66311c7e8d074d9e099bc5";
+var deviceID = "0a10aced202194944a04bc78"
+var url2 = "https://api.particle.io/v1/devices/" + deviceID + "/gradosF";
+function callback(data, status){
+	if (status == "success") {
+		temp = parseFloat(data.result);
+		temp = temp.toFixed(2);
+		g2.refresh(temp);
+		setTimeout(getReading, 1000);
+	}
+	else {
+		alert("There was a problem");
+	}
+}
+function getReading(){
+   	$.get(url2, {access_token: accessToken}, callback);
+}
+</script>
+</head>	
+
+<body>
+<div id="gauge2" class="200x160px"></div>
+
+<script>
+var g2 = new JustGage({
+    id: "gauge2",
+    value: 0,
+    min: 0,
+    max: 400,
+    title: "Temperatura (F)"
+});
+getReading();
+</script>
+
+//Humedad
+
+<script>
+var accessToken = "f1f3413d1a61b4df3a66311c7e8d074d9e099bc5";
+var deviceID = "0a10aced202194944a04bc78"
+var url = "https://api.particle.io/v1/devices/" + deviceID + "/humedad";
+function callback(data, status){
+	if (status == "success") {
+		temp = parseFloat(data.result);
+		temp = temp.toFixed(2);
+		g3.refresh(temp);
+		setTimeout(getReading, 1000);
+	}
+	else {
+		alert("There was a problem");
+	}
+}
+function getReading(){
+   	$.get(url, {access_token: accessToken}, callback);
+}
+</script>
+</head>	
+
+<body>
+<div id="gauge3" class="200x160px"></div>
+
+<script>
+var g3 = new JustGage({
+    id: "gauge3",
+    value: 0,
+    min: 0,
+    max: 400,
+    title: "Humedad (H)"
+});
+getReading();
+</script>
+
+</body>
+</html>
